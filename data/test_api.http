@@ -1,0 +1,42 @@
+# Testing Anilist GraphQL queries
+@anilist=https://graphql.anilist.co
+
+### Get user (barrettotte -> id: 247578)
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{User(search:\"barrettotte\"){id name statistics{anime{count meanScore episodesWatched minutesWatched}}}}"
+}
+
+### Get anime list of user
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{MediaListCollection(userId:247578,type:ANIME){lists{name entries{id}}}}"
+}
+
+### Find anime - paged
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:1,perPage:50){media(search:\"konosuba\"){id type format title{english romaji native}}}}"
+}
+
+### Get first anime (Cowboy Bebop)
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Media(type:ANIME,sort:ID){id title{english romaji native}}}"
+}
+
+### Fetch anime sorted by id asc (331 pages as of 09/17/2022)
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:331,perPage:50){pageInfo{total currentPage lastPage hasNextPage} media(type:ANIME,sort:ID,isAdult:false){id title{english romaji native}seasonYear}}}"
+}
