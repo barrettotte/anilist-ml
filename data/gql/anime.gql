@@ -1,0 +1,58 @@
+query($page: Int!, $startDate: Int!) {
+  Page(page: $page, perPage: 50) {
+    pageInfo {
+      total
+      currentPage
+      lastPage
+      hasNextPage
+    }
+    media(type: ANIME, sort: START_DATE, isAdult: false, startDate_greater: $startDate) {
+      id
+      title {
+        english
+        romaji
+        native
+      }
+      type
+      format
+      status
+      description
+      startDate {
+        year
+        month
+        day
+      }
+      endDate {
+        year
+        month
+        day
+      }
+      season
+      seasonYear
+      seasonInt
+      episodes
+      duration
+      countryOfOrigin
+      genres
+      averageScore
+      meanScore
+      popularity
+      source
+      nextAiringEpisode {
+        episode
+      }
+      tags {
+        id
+        name
+        description
+        category
+      }
+      studios(isMain: true) {
+        nodes {
+          id
+          name
+        }
+      }
+    }
+  }
+}

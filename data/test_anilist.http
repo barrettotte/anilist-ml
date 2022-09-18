@@ -1,0 +1,122 @@
+# Testing Anilist GraphQL queries
+@anilist=https://graphql.anilist.co
+
+### Get user (barrettotte -> id: 247578)
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{User(search:\"barrettotte\"){id name statistics{anime{count meanScore episodesWatched minutesWatched}}}}"
+}
+
+### Get anime list of user
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{MediaListCollection(userId:247578,type:ANIME){lists{name status entries{id status score(format:POINT_10) progress completedAt{year month day} media {id}}}}}"
+}
+
+### Get anime list of user, by type
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{MediaListCollection(userId:247578,type:ANIME,status:CURRENT){lists{name status entries{id status score(format:POINT_10) progress completedAt{year month day} media {id}}}}}"
+}
+
+### Get manga list of user
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{MediaListCollection(userId:247578,type:MANGA){lists{name status entries{id status score(format:POINT_10) progress completedAt{year month day} media {id}}}}}"
+}
+
+### Find anime - paged
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:1,perPage:50){media(search:\"konosuba\"){id type format title{english romaji native}}}}"
+}
+
+### Get first anime (Cowboy Bebop)
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Media(type:ANIME,sort:ID){id title{english romaji native}}}"
+}
+
+### Fetch anime sorted by id asc (331 pages as of 09/17/2022)
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:331,perPage:50){pageInfo{total currentPage lastPage hasNextPage} media(type:ANIME,sort:ID,isAdult:false){id title{english romaji native}seasonYear}}}"
+}
+
+### get anime with all top level data (One Piece) - doesn't include characters, staff, or studios
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:1,perPage:50){media(id:21){id title{english romaji native} type format status description startDate{year month day} endDate{year month day} season seasonYear seasonInt episodes duration countryOfOrigin genres synonyms averageScore meanScore popularity}}}"
+}
+
+### get anime with character data
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:1,perPage:50){media(id:21){id title{english romaji native} characters(sort:ID,page:1,perPage:50){pageInfo{total currentPage hasNextPage} nodes{id name{full native alternative alternativeSpoiler} gender age bloodType}}}}}"
+}
+
+### get anime with staff data
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:1,perPage:50){media(id:21){id title{english romaji native} staff(sort:ID,page:1,perPage:50){pageInfo{total currentPage hasNextPage} nodes{id name{full native alternative} description primaryOccupations gender dateOfBirth{year month day} dateOfDeath{year month day} age yearsActive homeTown bloodType}}}}}"
+}
+
+### get anime with studio data
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:1,perPage:50){media(id:21){id title{english romaji native} studios(sort:ID){nodes{id name isAnimationStudio}}}}}"
+}
+
+### get anime with media trend data
+POST {{anilist}}
+Content-Type: application/json 
+
+{
+    "query": "{Page(page:1,perPage:50){media(id:21){id title{english romaji native} trends(sort:DATE,page:1,perPage:50){pageInfo{total currentPage hasNextPage} nodes{mediaId date trending averageScore popularity inProgress releasing episode}}}}}"
+}
+
+### get anime with related media
+POST {{anilist}}
+Content-Type: application/json 
+
+{
+    "query": "{Page(page:1,perPage:50){media(id:21){id title{english romaji native} relations{pageInfo{total currentPage hasNextPage} nodes{id title{english romaji native} type format status}}}}}"
+}
+
+### get anime with user recommendations
+POST {{anilist}}
+Content-Type: application/json 
+
+{
+    "query": "{Page(page:1,perPage:50){media(id:21){id title{english romaji native} recommendations(sort:RATING_DESC,page:1,perPage:50){pageInfo{total currentPage hasNextPage} nodes{id rating userRating mediaRecommendation{id title{english romaji native}}}}}}}"
+}
+
+### get anime with data for ML practice
+POST {{anilist}}
+Content-Type: application/json
+
+{
+    "query": "{Page(page:1,perPage:50){media(id:21){id title{english romaji native} type format status description startDate{year month day} endDate{year month day} season seasonYear seasonInt episodes duration countryOfOrigin genres averageScore meanScore popularity source nextAiringEpisode{episode} studios(isMain:true){nodes{id name}} tags{id name description category}}}}"
+}

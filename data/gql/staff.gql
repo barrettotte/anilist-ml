@@ -1,0 +1,38 @@
+query($page: Int!, $mediaId: Int!) {
+  Page(page: $page, perPage: 50) {
+    media(id: $mediaId) {
+      staff(sort: ID, page: $page, perPage: 50) {
+        pageInfo {
+          total
+          currentPage
+          hasNextPage
+        }
+        nodes {
+          id
+          name {
+            full
+            native
+            alternative
+          }
+          description
+          primaryOccupations
+          gender
+          dateOfBirth {
+            year
+            month
+            day
+          }
+          dateOfDeath {
+            year
+            month
+            day
+          }
+          age
+          yearsActive
+          homeTown
+          bloodType
+        }
+      }
+    }
+  }
+}

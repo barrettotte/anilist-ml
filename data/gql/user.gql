@@ -1,0 +1,67 @@
+query($id: Int!) {
+  User(id: $id) {
+    name
+    createdAt
+    statistics {
+      anime {
+        count
+        meanScore
+        standardDeviation
+        minutesWatched
+        episodesWatched
+      }
+      manga {
+        count
+        meanScore
+        standardDeviation
+        chaptersRead
+        volumesRead
+      }
+    }
+    avatar {
+      large
+    }
+  }
+  MediaListCollection(userId: $id, type: ANIME) {
+    lists {
+      name
+      status
+      entries {
+        id
+        status
+        score(format: POINT_10)
+        progress
+        progressVolumes
+        completedAt {
+          year
+          month
+          day
+        }
+        media {
+          id
+        }
+      }
+    }
+  }
+  MediaListCollection(userId: $id, type: MANGA) {
+    lists {
+      name
+      status
+      entries {
+        id
+        status
+        score(format: POINT_10)
+        progress
+        progressVolumes
+        completedAt {
+          year
+          month
+          day
+        }
+        media {
+          id
+        }
+      }
+    }
+  }
+}
