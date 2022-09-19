@@ -1,5 +1,5 @@
 query($id: Int!) {
-  media(id: $id) {
+  Media(id: $id) {
     id
     title {
       english

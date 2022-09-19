@@ -36,13 +36,15 @@ def get_user(user_id: int) -> dict:
     '''
     Fetches Anilist user data
     '''
-    return anilist_req(gql_src('gql/user.gql'), {'id': user_id})
+    data = anilist_req(gql_src('gql/user.gql'), {'id': user_id})['data']
+    return {'user': data['User'], 'lists': data['MediaListCollection']['lists']}
 
 # fetch anime data
-def get_anime(anime_id: int, out_csv: str) -> dict:
+def get_anime(anime_id: int) -> dict:
     '''
     Fetches single Anilist anime entry
     '''
+    return anilist_req(gql_src('gql/anime_single.gql'), {'id': anime_id})['data']['Media']
 
 def download_anime_range(start: int, end: int, out_csv: str) -> int:
     '''
