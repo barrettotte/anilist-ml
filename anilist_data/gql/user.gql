@@ -10,16 +10,6 @@ query($id: Int!) {
         minutesWatched
         episodesWatched
       }
-      manga {
-        count
-        meanScore
-        standardDeviation
-        chaptersRead
-        volumesRead
-      }
-    }
-    avatar {
-      large
     }
   }
   MediaListCollection(userId: $id, type: ANIME) {
@@ -31,28 +21,6 @@ query($id: Int!) {
         status
         score(format: POINT_10)
         progress
-        progressVolumes
-        completedAt {
-          year
-          month
-          day
-        }
-        media {
-          id
-        }
-      }
-    }
-  }
-  MediaListCollection(userId: $id, type: MANGA) {
-    lists {
-      name
-      status
-      entries {
-        id
-        status
-        score(format: POINT_10)
-        progress
-        progressVolumes
         completedAt {
           year
           month

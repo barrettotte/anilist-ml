@@ -1,12 +1,12 @@
-query($page: Int!, $startDate: Int!) {
-  Page(page: $page, perPage: 50) {
+query($page: Int!, $perPage: Int!, $startDate: Int!, $endDate: Int!) {
+  Page(page: $page, perPage: $perPage) {
     pageInfo {
       total
       currentPage
       lastPage
       hasNextPage
     }
-    media(type: ANIME, sort: START_DATE, isAdult: false, startDate_greater: $startDate) {
+    media(type: ANIME, sort: START_DATE, isAdult: false, startDate_greater: $startDate, endDate_lesser: $endDate) {
       id
       title {
         english
