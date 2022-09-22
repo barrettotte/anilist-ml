@@ -1,4 +1,4 @@
-query($page: Int!, $perPage: Int!, $startDate: Int!, $endDate: Int!) {
+query($page: Int!, $perPage: Int!, $startDate: FuzzyDateInt!, $endDate: FuzzyDateInt!) {
   Page(page: $page, perPage: $perPage) {
     pageInfo {
       total
