@@ -31,7 +31,9 @@ def anilist_date_to_str(ad: dict) -> str:
     '''
     Convert Anilist date from {'year': 2022, 'month' 09, 'day': 01} to '2022-09-01'
     '''
-    y = ad['year'] if ad['year'] else 1900
+    y = ad['year']
+    if not y:
+        return None
     m = ad['month'] if ad['month'] else 1
     d = ad['day'] if ad['day'] else 1
     return f'{y}-{m:02d}-{d:02d}'
@@ -77,7 +79,7 @@ def anime_entry_to_row(entry: dict) -> list:
             entry['meanScore'],
             entry['popularity'],
             entry['source'],
-            entry['nextAiringEpisode'],
+            json.dumps(entry['nextAiringEpisode']),
             json.dumps(entry['tags']),
             json.dumps(entry['studios']['nodes']),
         ]
@@ -123,20 +125,14 @@ def get_anime(anime_id: int) -> dict:
     return anilist_req(gql_src('gql/anime_single.gql'), {'id': anime_id})['data']['Media']
 
 
-def download_anime_range(start: datetime, end: datetime, out_csv: str) -> int:
+def download_anime_range(out_csv: str) -> int:
     '''
-    Downloads all Anilist anime data in date range (YYYYMMDD-YYYYMMDD) to CSV.
-    Returns entry count.
+    Downloads all Anilist anime data available. Returns entry count.
 
     Note: This will batch requests to avoid hitting Anilist's rate limit. So, the
         bigger the range, the longer the download.
     '''
-    gql_vars = {
-        'page': 1,
-        'perPage': PER_PAGE,
-        'startDate': to_fuzzy_date_int(start),
-        'endDate': to_fuzzy_date_int(end + timedelta(1))
-    }
+    gql_vars = {'page': 1, 'perPage': PER_PAGE}
     header = [
         'id', 'title_english', 'title_romaji', 'title_native', 'type', 'format', 'status', 'description', 
         'startDate', 'endDate', 'season', 'seasonYear', 'seasonInt', 'episodes', 'duration_mins', 'countryOfOrigin', 
