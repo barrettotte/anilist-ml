@@ -135,8 +135,8 @@ def download_anime_range(out_csv: str) -> int:
     gql_vars = {'page': 1, 'perPage': PER_PAGE}
     header = [
         'id', 'title_english', 'title_romaji', 'title_native', 'type', 'format', 'status', 'description', 
-        'startDate', 'endDate', 'season', 'seasonYear', 'seasonInt', 'episodes', 'duration_mins', 'countryOfOrigin', 
-        'genres', 'averageScore', 'meanScore', 'popularity', 'source', 'nextAiringEpisode', 'tags', 'studios'
+        'start_date', 'end_date', 'season', 'season_year', 'season_int', 'episodes', 'duration_mins', 'country', 
+        'genres', 'average_score', 'mean_score', 'popularity', 'source', 'next_airing_episode', 'tags', 'studios'
     ]
     with open(out_csv, 'w+', encoding='utf-8') as f:
         writer = csv.writer(f)
