@@ -14,14 +14,16 @@ Practicing machine learning with Anilist data
 
 ## Data
 
-- [data/anime-YYYYMMDD-raw.csv](data/anime-20220927-raw.csv)
-- [data/user-YYYYMMDD-raw.csv](data/user-20220927-raw.csv)
-- [data/anime-YYYYMMDD-clean.csv](data/anime-20220927-clean.csv)
-- [data/user-YYYYMMDD-clean.csv](data/user-20220927-clean.csv)
-- [data/user-YYYYMMDD-enriched.csv](data/user-20220927-enriched.csv)
-- [data/anime-YYYYMMDD-encoded.csv](data/user-20220927-encoded.csv)
+- [data/anime-YYYYMMDD-raw.csv](data/anime-20220927-raw.csv) - raw Anilist anime data
+- [data/user-YYYYMMDD-raw.csv](data/user-20220927-raw.csv) - raw Anilist user data
+- [data/anime-YYYYMMDD-clean.csv](data/anime-20220927-clean.csv) - cleaned anime data; usesless columns dropped and missing data filled
+- [data/user-YYYYMMDD-clean.csv](data/user-20220927-clean.csv) - cleaned user data; useless columns dropped
+- [data/user-YYYYMMDD-enriched.csv](data/user-20220927-enriched.csv) - user data joined with anime data
+- [data/anime-YYYYMMDD-encoded.csv](data/user-20220927-encoded.csv) - data for training; categorical data is binary encoded
 
 ## References
 
 - [Anilist Interactive GraphQL Tool](https://anilist.co/graphiql)
 - [Anilist GraphQL Documentation Explorer](https://anilist.github.io/ApiV2-GraphQL-Docs/)
+- [Coursera Machine Learning Specialization (Andrew Ng)](https://www.coursera.org/specializations/machine-learning-introduction)
+- [Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow. Geron](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1492032646)
