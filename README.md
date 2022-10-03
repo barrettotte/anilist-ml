@@ -14,12 +14,17 @@ Practicing machine learning with Anilist data
 
 ## Data
 
-- [data/anime-YYYYMMDD-raw.csv](data/anime-20220927-raw.csv) - raw Anilist anime data
-- [data/user-YYYYMMDD-raw.csv](data/user-20220927-raw.csv) - raw Anilist user data
-- [data/anime-YYYYMMDD-clean.csv](data/anime-20220927-clean.csv) - cleaned anime data; usesless columns dropped and missing data filled
-- [data/user-YYYYMMDD-clean.csv](data/user-20220927-clean.csv) - cleaned user data; useless columns dropped
-- [data/user-YYYYMMDD-enriched.csv](data/user-20220927-enriched.csv) - user data joined with anime data
-- [data/anime-YYYYMMDD-encoded.csv](data/user-20220927-encoded.csv) - data for training; categorical data is binary encoded
+- fetched
+  - [data/anime-YYYYMMDD-raw.csv](data/anime-20220927-raw.csv) - raw Anilist anime data
+  - [data/user-YYYYMMDD-raw.csv](data/user-20220927-raw.csv) - raw Anilist user data
+- cleaned/enriched
+  - [data/anime-YYYYMMDD-clean.csv](data/anime-20220927-clean.csv) - cleaned anime data; usesless columns dropped and missing data filled
+  - [data/user-YYYYMMDD-clean.csv](data/user-20220927-clean.csv) - cleaned user data; useless columns dropped
+  - [data/user-YYYYMMDD-enriched.csv](data/user-20220927-enriched.csv) - user data joined with anime data
+- regression
+  - [data/user-YYYYMMDD-train-reg.csv](data/user-20220927-reg-train.csv) - train data for regression models
+  - [data/user-YYYYMMDD-valid-reg.csv](data/user-20220927-reg-valid.csv) - validation data for regression models
+  - [data/user-YYYYMMDD-test-reg.csv](data/user-20220927-reg-test.csv) - test data for regression models
 
 ## References
 
