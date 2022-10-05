@@ -1,8 +1,24 @@
 # anilist-ml
 
-Practicing machine learning with Anilist data
+Learning the basics of machine learning with Anilist data
 
 ## Summary
+
+I originally set out to make a model trained on my Anilist data that was able
+to predict the score (1-10) that I would probably give an anime.
+
+At first I tried to make a regression, but soon realized that since I was only rating 1-10,
+I would probably have more accuracy using a classifier.
+
+The best I was able to pull off was a random forest classifier with accuracy ~0.38.
+I think my data is kind of bad since I tend to give scores of 7 too much and I only had ~500 data points.
+
+After messing around for a while I decided to switch to a binary classification; Would I recommend or don't recommend?
+TODO: results
+
+Someone knowledgeable in machine learning could probably point out what I was doing wrong immediately.
+But, oh well this was my first project and I have a lot to learn. This wasn't exactly a win, but hopefully the next
+ML project goes better.
 
 ### Notebooks
 
@@ -22,9 +38,13 @@ Practicing machine learning with Anilist data
   - [data/user-YYYYMMDD-clean.csv](data/user-20220927-clean.csv) - cleaned user data; useless columns dropped
   - [data/user-YYYYMMDD-enriched.csv](data/user-20220927-enriched.csv) - user data joined with anime data
 - regression
-  - [data/user-YYYYMMDD-train-reg.csv](data/user-20220927-reg-train.csv) - train data for regression models
-  - [data/user-YYYYMMDD-valid-reg.csv](data/user-20220927-reg-valid.csv) - validation data for regression models
-  - [data/user-YYYYMMDD-test-reg.csv](data/user-20220927-reg-test.csv) - test data for regression models
+  - [data/user-YYYYMMDD-reg-train.csv](data/user-20220927-reg-train.csv) - train data for regression models
+  - [data/user-YYYYMMDD-reg-valid.csv](data/user-20220927-reg-valid.csv) - validation data for regression models
+  - [data/user-YYYYMMDD-reg-test.csv](data/user-20220927-reg-test.csv) - test data for regression models
+- classification
+  - [data/user-YYYYMMDD-cls-train.csv](data/user-20220927-cls-train.csv) - train data for classifier models
+  - [data/user-YYYYMMDD-cls-valid.csv](data/user-20220927-cls-valid.csv) - validation data for classifier models
+  - [data/user-YYYYMMDD-cls-test.csv](data/user-20220927-cls-test.csv) - test data for classifier models
 
 ## References
 

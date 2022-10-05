@@ -5,6 +5,7 @@ lib/
 include/
 share/
 lib64
+venv
 
 __pycache__
 *.pyc
@@ -12,6 +13,5 @@ __pycache__
 .vscode/
 .ipynb_checkpoints/
 
+temp.jsonc
 test.py
-
-venv
