@@ -9,18 +9,46 @@ to predict the score (1-10) that I would probably give an anime.
 
 At first I tried to make a regression model. I realized since I was only rating 1-10
 I would probably have more accuracy using a classifier model. Classifier models were definitely more accurate.
-But, the best I was able to pull off was a random forest classifier with accuracy ~0.38.
+But, the best I was able to pull off was a random forest classifier with an accuracy of ~38%.
 
 I think my data is subpar since I only have ~500 data points and generally skewed data.
 I tend to give an anime a score of 7 more than anything else and also tend to not be very critical.
 So, entries with a score below 5 are very rare and I think it makes training more difficult.
 
-After messing around for a while I decided to switch to a binary classification; Would I recommend or not recommend an anime?
-My final result was a random forest classifier with an accuracy of ~84-85%.
+After messing around for a while I decided to switch to a binary classification and change my target.
+Would I recommend or not recommend an anime?
+With this change, my final result was a random forest classifier with an accuracy of ~84-85%.
 
 Someone knowledgeable in machine learning could probably point out what I was doing wrong immediately.
 But, oh well this was my first ML project and I have a lot to learn. 
 This wasn't exactly a win, but hopefully the next ML project goes better.
+
+## Results
+
+The final model is located in [model.ipynb](model.ipynb).
+
+```txt
+Log loss = 4.934196584711905
+ROC AUC Score = 0.8524492234169653
+
+Confusion Matrix:
+[[19 12]
+ [ 4 77]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+       False   0.826087  0.612903  0.703704        31
+        True   0.865169  0.950617  0.905882        81
+
+    accuracy                       0.857143       112
+   macro avg   0.845628  0.781760  0.804793       112
+weighted avg   0.854351  0.857143  0.849922       112
+```
+
+ROC Plot
+
+![roc.png](roc.png)
 
 ### Notebooks
 
