@@ -31,10 +31,6 @@ The final model is located in [model.ipynb](model.ipynb).
 Log loss = 4.934196584711905
 ROC AUC Score = 0.8524492234169653
 
-Confusion Matrix:
-[[19 12]
- [ 4 77]]
-
 Classification Report:
               precision    recall  f1-score   support
 
