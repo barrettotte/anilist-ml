@@ -7,26 +7,29 @@ Learning the basics of machine learning with Anilist data
 I originally set out to make a model trained on my Anilist data that was able
 to predict the score (1-10) that I would probably give an anime.
 
-At first I tried to make a regression, but soon realized that since I was only rating 1-10,
-I would probably have more accuracy using a classifier.
+At first I tried to make a regression model. I realized since I was only rating 1-10
+I would probably have more accuracy using a classifier model. Classifier models were definitely more accurate.
+But, the best I was able to pull off was a random forest classifier with accuracy ~0.38.
 
-The best I was able to pull off was a random forest classifier with accuracy ~0.38.
-I think my data is kind of bad since I tend to give scores of 7 too much and I only had ~500 data points.
+I think my data is subpar since I only have ~500 data points and generally skewed data.
+I tend to give an anime a score of 7 more than anything else and also tend to not be very critical.
+So, entries with a score below 5 are very rare and I think it makes training more difficult.
 
-After messing around for a while I decided to switch to a binary classification; Would I recommend or don't recommend?
-TODO: results
+After messing around for a while I decided to switch to a binary classification; Would I recommend or not recommend an anime?
+My final result was a random forest classifier with an accuracy of ~84-85%.
 
 Someone knowledgeable in machine learning could probably point out what I was doing wrong immediately.
-But, oh well this was my first project and I have a lot to learn. This wasn't exactly a win, but hopefully the next
-ML project goes better.
+But, oh well this was my first ML project and I have a lot to learn. 
+This wasn't exactly a win, but hopefully the next ML project goes better.
 
 ### Notebooks
 
 1. [fetch.ipynb](fetch.ipynb) - Fetches user and anime data using Anilist's GraphQL API.
 2. [clean.ipynb](clean.ipynb) - Cleans fetched data to prepare for data visualization and model training.
 3. [explore.ipynb](explore.ipynb) - Some data visualizations and general exploration of data.
-4. [model-selection.ipynb](model-selection.ipynb) - Testing out different models and selecting what seems to perform the best.
-5. [model-final.ipynb](model-final.ipynb) - Final model training, verification, and presenting.
+4. [model-select-reg.ipynb](model-select-reg.ipynb) - Testing out different regression models.
+5. [model-select-cls.ipynb](model-select-cls.ipynb) - Testing out different classifier models.
+6. [model.ipynb](model-final.ipynb) - Final model training, verification, and evaluation.
 
 ## Data
 
@@ -45,6 +48,9 @@ ML project goes better.
   - [data/user-YYYYMMDD-cls-train.csv](data/user-20220927-cls-train.csv) - train data for classifier models
   - [data/user-YYYYMMDD-cls-valid.csv](data/user-20220927-cls-valid.csv) - validation data for classifier models
   - [data/user-YYYYMMDD-cls-test.csv](data/user-20220927-cls-test.csv) - test data for classifier models
+
+I also made the Anilist anime data (as of 09/27/2022) available on 
+[Kaggle](https://www.kaggle.com/datasets/barrettotte/anilistanimedata).
 
 ## References
 
